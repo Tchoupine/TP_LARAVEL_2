@@ -17,8 +17,9 @@ use Illuminate\Support\Facades\Route;
 Route::get('/', [PagesController::class, 'index'])->name('home');
 Route::get('/table', [PagesController::class, 'table'])->name('table');
 Route::get('/details', [PagesController::class, 'details'])->name('details');
-Route::resource('/freelancers', FreelancerController::class);
+Route::resource('freelancers', FreelancerController::class);
 Route::post('/freelancers', [FreelancerController::class, 'store'])->name('freelancers.store');
+
 
 // Route::get('/', function () {
 //     return view('welcome');
