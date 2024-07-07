@@ -50,7 +50,11 @@
             <div class="setting-content employee-profile-new">
 
                 {{-- ton formulaire --}}
+<<<<<<< HEAD
                 <form action="{{ route('freelancers.store') }}" method="POST" enctype="multipart/form-data">
+=======
+                {{-- <form action="{{ route ('freelancers.store')}}" method="POST" style="margin-left: 30%" enctype="multipart/form-data">
+>>>>>>> eea62851e1aad0af1a0ecdf287aa0bdb01200218
                     @csrf
                     <div class="card">
                         <div class="pro-head">
@@ -158,9 +162,15 @@
                             <button class="btn btn-primary click-btn btn-plan" type="submit">Update</button>
                         </div>
                     </div>
+<<<<<<< HEAD
                 </form> 
 
                 {{-- mon formualire 
+=======
+                </form> --}}
+
+                {{-- mon formualire --}}
+>>>>>>> eea62851e1aad0af1a0ecdf287aa0bdb01200218
                 <form action="{{ route('freelancers.store') }}" method="POST" enctype="multipart/form-data">
                     @csrf
                     <div>
@@ -211,7 +221,11 @@
                         </select>
                     </div>
                     <button type="submit">Submit</button>
+<<<<<<< HEAD
                 </form>--}}
+=======
+                </form>
+>>>>>>> eea62851e1aad0af1a0ecdf287aa0bdb01200218
 
 
 
