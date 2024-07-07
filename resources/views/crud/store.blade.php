@@ -158,9 +158,11 @@
                             <button class="btn btn-primary click-btn btn-plan" type="submit">Update</button>
                         </div>
                     </div>
+
                 </form>
 
                 {{-- mon formualire
+
                 <form action="{{ route('freelancers.store') }}" method="POST" enctype="multipart/form-data">
                     @csrf
                     <div>
