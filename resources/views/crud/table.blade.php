@@ -20,7 +20,7 @@
             </div>
         </div>
     </div>
-
+    
     @foreach($freelancers as $freelancer)
         <div class="list-book-mark book-mark favour-book">
             <div class="row justify-content-center">
