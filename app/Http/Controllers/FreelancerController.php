@@ -113,4 +113,5 @@ class FreelancerController extends Controller
         // Redirection après enregistrement
         return redirect()->back()->with('success', 'Freelancer created successfully.');
     }
+    
 }
