@@ -1,6 +1,31 @@
 @extends('layouts.app')
 
 @section('content')
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=0">
+    <title>KofeJob</title>
+
+    <link rel="shortcut icon" href=".../../assets/img/favicon.png" type="image/x-icon">
+
+    <link rel="stylesheet" href="../../assets/css/bootstrap.min.css">
+
+    <link rel="stylesheet" href="../../assets/plugins/fontawesome/css/fontawesome.min.css">
+    <link rel="stylesheet" href="../../assets/plugins/fontawesome/css/all.min.css">
+
+    <link rel="stylesheet" href="../../assets/css/owl.carousel.min.css">
+    <link rel="stylesheet" href="../../assets/css/owl.theme.default.min.css">
+    <link rel="stylesheet" href="../../assets/css/animate.min.css">
+    <link rel="stylesheet" href="../../assets/css/animate.css">
+
+    <link rel="stylesheet" href="../../assets/plugins/feather/feather.css">
+
+    <link rel="stylesheet" href="../../assets/plugins/aos/aos.css">
+
+    <link rel="stylesheet" href="../../assets/plugins/select2/css/select2.min.css">
+
+    <link rel="stylesheet" href="../../assets/css/style.css">
+</head>
     <div class="bread-crumb-bar">
         <div class="container">
             <div class="row align-items-center inner-banner">
@@ -20,7 +45,14 @@
             </div>
         </div>
     </div>
-    
+
+
+    @if(session('success'))
+        <div class="alert alert-success" style="color: green">
+            {{ session('success') }}
+        </div>
+    @endif
+
     @foreach($freelancers as $freelancer)
         <div class="list-book-mark book-mark favour-book">
             <div class="row justify-content-center">
@@ -68,10 +100,15 @@
                                     </div>
                                 </div>
                             </div>
-                            <div class="develop-list-pro">
+                            <div class="develop-list-pro" style="width: 250px; ">
                                 <div class="cart-hover">
                                     <a href="{{ route('freelancers.edit', $freelancer->id) }}" class="btn-cart mb-2" tabindex="-1">Edit</a>
-                                    <a href="{{ route('details', $freelancer->id) }}" class="btn-cart" tabindex="-1">View Profile</a>
+                                    <form action="{{ route('freelancers.destroy', $freelancer->id) }}" method="POST" onsubmit="return confirm('Are you sure you want to delete this freelancer?');">
+                                        @csrf
+                                        @method('DELETE')
+                                        <button type="submit" class="btn-cart ">Delete</button>
+                                    </form>
+                                    <a href="{{ route('details', $freelancer->id) }}" class="btn-cart mt-2" tabindex="-1">View Profile</a>
                                 </div>
                             </div>
                         </div>
@@ -80,6 +117,13 @@
             </div>
         </div>
     @endforeach
+    <div class="row">
+        <div class="col-md-12" style="margin-left: 40%">
+            {{ $freelancers->links('pagination::bootstrap-4') }}
+        </div>
+    </div>
+    
+
 @endsection
 
 @section('js')

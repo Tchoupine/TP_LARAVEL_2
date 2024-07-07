@@ -31,12 +31,6 @@
         <li class="{{ request()->routeIs('table') ? 'active' : '' }}">
             <a href="{{ route('table') }}">Freelancer</a>
         </li>
-        {{-- <li class="{{ request()->routeIs('details') ? 'active' : '' }}">
-            <a href="{{ route('details') }}">Freelancer Details</a>
-        </li>
-        <li class="{{ request()->routeIs('formulaire') ? 'active' : '' }}">
-            <a href="{{ route('formulaire') }}">Settings</a> 
-        </li>--}}
         
     </ul>
     

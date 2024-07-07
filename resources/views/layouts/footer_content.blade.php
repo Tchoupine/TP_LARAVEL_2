@@ -4,7 +4,7 @@
     <div class=" col-lg-4 col-md-12">
     <div class="footer-bottom-logo">
     <a href="index.html" class="menu-logo">
-    <img src="../assets/img/logo.svg" class="img-fluid" alt="Logo">
+    <img src="../../assets/img/logo.svg" class="img-fluid" alt="Logo">
     </a>
     <p>We’re always in search for talented and motivated people. Don’t be shy introduce yourself!</p>
     <ul>

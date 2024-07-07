@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Freelancer;
 use Illuminate\Http\Request;
 
 class PagesController extends Controller
@@ -11,13 +12,16 @@ class PagesController extends Controller
         return view('index');
     }
 
-    public function table(){
-        
-        return view('crud.table');
+    public function table()
+    {
+        $freelancers = Freelancer::all();
+        $freelancers = Freelancer::paginate(10);
+        return view('crud.table', compact('freelancers'));
     }
 
-    public function details(){
-        
-        return view('details.index');
+    public function details($id)
+    {
+        $freelancer = Freelancer::find($id);
+        return view('details', compact('freelancer'));
     }
 }

@@ -15,6 +15,7 @@ class FreelancerController extends Controller
     public function index()
     {
         $freelancers = Freelancer::all();
+        $freelancers = Freelancer::paginate(10);
         return view('crud.table', compact('freelancers'));
     }
 
@@ -26,25 +27,6 @@ class FreelancerController extends Controller
         return view('crud.store');
     }
 
-    /**
-     * Store a newly created resource in storage.
-     */
-    // public function store(FreelancerRequest $request)
-    // {
-    //     Log::info($request->all());
-    //     try {
-    //         $data = $request->validated();
-
-
-    //         Freelancer::create($data);
-
-    //         return redirect()->route('freelancers.index')->with('success', 'Freelancer created successfully.');
-    //     } catch (\Exception $e) {
-    //         log::error('Error creating freelancer: '.$e->getMessage());
-    //         return back()->with('error', 'There was an error creating the freelancer.');
-    //     }
-
-    // }
 
     /**
      * Display the specified resource.
@@ -57,26 +39,63 @@ class FreelancerController extends Controller
     /**
      * Show the form for editing the specified resource.
      */
-    public function edit(string $id)
+    public function edit($id)
     {
-        return view('crud.edit');
+        $freelancer = Freelancer::findOrFail($id);
+        return view('crud.edit', compact('freelancer'));
     }
+
 
     /**
      * Update the specified resource in storage.
      */
-    public function update(Request $request, string $id)
-    {
-        //
+    public function update(Request $request, $id)
+{
+    $request->validate([
+        'photo' => 'nullable|image|mimes:jpeg,png,jpg,gif,svg|max:2048',
+        'first_name' => 'required',
+        'last_name' => 'required',
+        'phone_number' => 'required',
+        'email_address' => 'required|email',
+        'address' => 'required',
+        'country' => 'required',
+        'city' => 'required',
+        'profession' => 'required|string|max:255',
+        'cv' => 'required|mimes:pdf,doc,docx|max:2048',
+        'gender' => 'required|string|in:male,female',
+    ]);
+
+    $freelancer = Freelancer::find($id);
+
+    if ($request->hasFile('photo')) {
+        $profilePath = $request->file('photo')->store('photos', 'public');
+        $freelancer->photo = $profilePath;
     }
+
+    if ($request->hasFile('cv')) {
+        $cvPath = $request->file('cv')->store('cvs', 'public');
+        $freelancer->cv = $cvPath;
+    }
+
+    $freelancer->update($request->all());
+
+    return redirect()->route('freelancers.index')
+                    ->with('success', 'Freelancer updated successfully.');
+}
+
 
     /**
      * Remove the specified resource from storage.
      */
-    public function destroy(string $id)
+    public function destroy(Freelancer $freelancer)
     {
-        //
+        $freelancer->delete();
+        
+        return redirect()->route('freelancers.index')
+                         ->with('success', 'Freelancer deleted successfully.');
+
     }
+
     //function to create freelance
     public function store(Request $request)
     {
@@ -111,6 +130,7 @@ class FreelancerController extends Controller
         Freelancer::create($validatedData);
 
         // Redirection après enregistrement
-        return redirect()->back()->with('success', 'Freelancer created successfully.');
+        return redirect()->route('freelancers.index')
+                         ->with('success', 'Freelancer created successfully.');
     }
 }

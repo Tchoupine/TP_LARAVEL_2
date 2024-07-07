@@ -49,8 +49,7 @@
         <div class="pro-pos">
             <div class="setting-content employee-profile-new">
 
-                {{-- ton formulaire --}}
-                <form action="{{ route('freelancers.store') }}" method="POST" enctype="multipart/form-data">
+                <form style="margin-left: 30%" action="{{ route('freelancers.store') }}" method="POST" enctype="multipart/form-data">
                     @csrf
                     <div class="card">
                         <div class="pro-head">
@@ -79,50 +78,50 @@
                                 </div>
                                 <div class="col-lg-6 col-md-12">
                                     <div class="mb-3">
-                                        <label class="form-label">First Name</label>
-                                        <input type="text" id="first_name" name="first_name" required>
+                                    <label class="form-label">First Name</label>
+                                    <input type="text" class="form-control" id="first_name" name="first_name">
                                     </div>
-                                </div>
+                                    </div>
                                 <div class="col-lg-6 col-md-12">
                                     <div class="mb-3">
                                         <label class="form-label">Last Name</label>
-                                        <input type="text" id="last_name" name="last_name" required>
+                                        <input class="form-control" type="text" id="last_name" name="last_name" required>
                                     </div>
                                 </div>
                                 <div class="col-lg-6 col-md-12">
                                     <div class="mb-3">
                                         <label class="form-label">Phone Number</label>
-                                        <input type="text" id="phone_number" name="phone_number" required>
+                                        <input class="form-control" type="text" id="phone_number" name="phone_number" required>
                                     </div>
                                 </div>
                                 <div class="col-lg-6 col-md-12">
                                     <div class="mb-3">
                                         <label class="form-label">Email Address</label>
-                                        <input type="email" id="email_address" name="email_address" required>
+                                        <input class="form-control" type="email" id="email_address" name="email_address" required>
                                     </div>
                                 </div>
                                 <div class="col-lg-6 col-md-12">
                                     <div class="mb-3">
                                         <label class="form-label">Country</label>
-                                        <input type="text" id="country" name="country" required>
+                                        <input class="form-control" type="text" id="country" name="country" required>
                                     </div>
                                 </div>
                                 <div class="col-lg-6 col-md-12">
                                     <div class="mb-3">
                                         <label class="form-label">City</label>
-                                        <input type="text" id="city" name="city" required>
+                                        <input class="form-control" type="text" id="city" name="city" required>
                                     </div>
                                 </div>
                                 <div class="col-lg-6 col-md-12">
                                     <div class="mb-3">
                                         <label class="form-label">Address</label>
-                                        <input type="text" id="address" name="address" required>
+                                        <input class="form-control" type="text" id="address" name="address" required>
                                     </div>
                                 </div>
                                  <div class="col-lg-6 col-md-12">
                                     <div class="mb-3">
                                         <label class="form-label">Profession</label>
-                                        <select class="select" name="profession">
+                                        <select class="form-control" class="select" name="profession">
                                             <option value="Developer">Developer</option>
                                             <option value="Designer">Designer</option>
                                             <option value="Manager">Manager</option>
@@ -132,7 +131,7 @@
                                 <div class="col-lg-6 col-md-12">
                                     <div class="mb-3">
                                         <label class="form-label">CV</label>
-                                        <input type="file" id="cv" name="cv" required>
+                                        <input class="form-control" type="file" id="cv" name="cv" required>
                                     </div>
                                 </div>
 
@@ -141,10 +140,10 @@
                                         <label class="form-label">Gender</label>
                                         <div>
                                             <label class="form-check-label me-3">
-                                                <input type="radio" name="gender" value="male" class="form-check-input"> Male
+                                                <input  type="radio" name="gender" value="male" class="form-check-input"> Male
                                             </label>
                                             <label class="form-check-label">
-                                                <input type="radio" name="gender" value="female" class="form-check-input"> Female
+                                                <input  type="radio" name="gender" value="female" class="form-check-input"> Female
                                             </label>
                                         </div>
                                     </div>
@@ -154,67 +153,13 @@
                     </div>
                     <div class="card text-end border-0">
                         <div class="pro-body">
-                            <button class="btn btn-secondary click-btn btn-plan">Cancel</button>
-                            <button class="btn btn-primary click-btn btn-plan" type="submit">Update</button>
+                            <a href="javascript:history.back()" class="btn btn-primary click-btn btn-plan" >Cancel</a>
+                            <button class="btn btn-primary click-btn btn-plan" type="submit">Create</button>
                         </div>
                     </div>
                 </form> 
 
-                {{-- mon formualire 
-                <form action="{{ route('freelancers.store') }}" method="POST" enctype="multipart/form-data">
-                    @csrf
-                    <div>
-                        <label for="photo">Photo</label>
-                        <input type="file" id="photo" name="photo" required>
-                    </div>
-                    <div>
-                        <label for="first_name">First Name</label>
-                        <input type="text" id="first_name" name="first_name" required>
-                    </div>
-                    <div>
-                        <label for="last_name">Last Name</label>
-                        <input type="text" id="last_name" name="last_name" required>
-                    </div>
-                    <div>
-                        <label for="phone_number">Phone Number</label>
-                        <input type="text" id="phone_number" name="phone_number" required>
-                    </div>
-                    <div>
-                        <label for="email_address">Email Address</label>
-                        <input type="email" id="email_address" name="email_address" required>
-                    </div>
-                    <div>
-                        <label for="country">Country</label>
-                        <input type="text" id="country" name="country" required>
-                    </div>
-                    <div>
-                        <label for="city">City</label>
-                        <input type="text" id="city" name="city" required>
-                    </div>
-                    <div>
-                        <label for="address">Address</label>
-                        <input type="text" id="address" name="address" required>
-                    </div>
-                    <div>
-                        <label for="profession">Profession</label>
-                        <input type="text" id="profession" name="profession" required>
-                    </div>
-                    <div>
-                        <label for="cv">CV</label>
-                        <input type="file" id="cv" name="cv" required>
-                    </div>
-                    <div>
-                        <label for="gender">Gender</label>
-                        <select id="gender" name="gender" required>
-                            <option value="male">Male</option>
-                            <option value="female">Female</option>
-                        </select>
-                    </div>
-                    <button type="submit">Submit</button>
-                </form>--}}
-
-
-
+             
             </div>
         </div>
     </div>
