@@ -48,11 +48,13 @@
     <div class="col-xl-9 col-lg-8 ml-20">
         <div class="pro-pos">
             <div class="setting-content employee-profile-new">
-                <form action="{{ route ('freelancers.store')}}" method="POST" style="margin-left: 30%" enctype="multipart/form-data">
+
+                {{-- ton formulaire --}}
+                <form action="{{ route('freelancers.store') }}" method="POST" enctype="multipart/form-data">
                     @csrf
                     <div class="card">
                         <div class="pro-head">
-                            {{-- <h3>Profile Setting</h3> --}}
+
                         </div>
                         <div class="pro-body">
                             <div class="row">
@@ -67,7 +69,7 @@
                                                 </div>
                                                 <div class="ms-3">
                                                     <label class="file-upload image-upbtn ms-0">
-                                                        Upload Image <input type="file" id="imgInp" name="photo">
+                                                        Upload Image <input type="file" id="photo" name="photo" required>
                                                     </label>
                                                     <p>Max Image size 300*300</p>
                                                 </div>
@@ -78,58 +80,49 @@
                                 <div class="col-lg-6 col-md-12">
                                     <div class="mb-3">
                                         <label class="form-label">First Name</label>
-                                        <input type="text" class="form-control" name="first_name">
+                                        <input type="text" id="first_name" name="first_name" required>
                                     </div>
                                 </div>
                                 <div class="col-lg-6 col-md-12">
                                     <div class="mb-3">
                                         <label class="form-label">Last Name</label>
-                                        <input type="text" class="form-control" name="last_name">
+                                        <input type="text" id="last_name" name="last_name" required>
                                     </div>
                                 </div>
                                 <div class="col-lg-6 col-md-12">
                                     <div class="mb-3">
                                         <label class="form-label">Phone Number</label>
-                                        <input type="text" class="form-control" name="phone_number">
+                                        <input type="text" id="phone_number" name="phone_number" required>
                                     </div>
                                 </div>
                                 <div class="col-lg-6 col-md-12">
                                     <div class="mb-3">
                                         <label class="form-label">Email Address</label>
-                                        <input type="text" class="form-control" name="email_address">
+                                        <input type="email" id="email_address" name="email_address" required>
                                     </div>
                                 </div>
                                 <div class="col-lg-6 col-md-12">
                                     <div class="mb-3">
                                         <label class="form-label">Country</label>
-                                        <select class="select" name="country">
-                                            <option value>Select</option>
-                                            <option value="UK">UK</option>
-                                            <option value="USA">USA</option>
-                                        </select>
+                                        <input type="text" id="country" name="country" required>
                                     </div>
                                 </div>
                                 <div class="col-lg-6 col-md-12">
                                     <div class="mb-3">
                                         <label class="form-label">City</label>
-                                        <select class="select" name="city">
-                                            <option value>Select</option>
-                                            <option value="UK">Londres</option>
-                                            <option value="USA">New York</option>
-                                        </select>
+                                        <input type="text" id="city" name="city" required>
                                     </div>
                                 </div>
                                 <div class="col-lg-6 col-md-12">
                                     <div class="mb-3">
                                         <label class="form-label">Address</label>
-                                        <input type="text" class="form-control" name="address">
+                                        <input type="text" id="address" name="address" required>
                                     </div>
                                 </div>
                                  <div class="col-lg-6 col-md-12">
                                     <div class="mb-3">
                                         <label class="form-label">Profession</label>
                                         <select class="select" name="profession">
-                                            <option value>Select</option>
                                             <option value="Developer">Developer</option>
                                             <option value="Designer">Designer</option>
                                             <option value="Manager">Manager</option>
@@ -139,10 +132,10 @@
                                 <div class="col-lg-6 col-md-12">
                                     <div class="mb-3">
                                         <label class="form-label">CV</label>
-                                        <input type="file" class="form-control" name="cv">
+                                        <input type="file" id="cv" name="cv" required>
                                     </div>
                                 </div>
-                               
+
                                 <div class="col-lg-6 col-md-12">
                                     <div class="mb-3">
                                         <label class="form-label">Gender</label>
@@ -165,7 +158,63 @@
                             <button class="btn btn-primary click-btn btn-plan" type="submit">Update</button>
                         </div>
                     </div>
-                </form>
+                </form> 
+
+                {{-- mon formualire 
+                <form action="{{ route('freelancers.store') }}" method="POST" enctype="multipart/form-data">
+                    @csrf
+                    <div>
+                        <label for="photo">Photo</label>
+                        <input type="file" id="photo" name="photo" required>
+                    </div>
+                    <div>
+                        <label for="first_name">First Name</label>
+                        <input type="text" id="first_name" name="first_name" required>
+                    </div>
+                    <div>
+                        <label for="last_name">Last Name</label>
+                        <input type="text" id="last_name" name="last_name" required>
+                    </div>
+                    <div>
+                        <label for="phone_number">Phone Number</label>
+                        <input type="text" id="phone_number" name="phone_number" required>
+                    </div>
+                    <div>
+                        <label for="email_address">Email Address</label>
+                        <input type="email" id="email_address" name="email_address" required>
+                    </div>
+                    <div>
+                        <label for="country">Country</label>
+                        <input type="text" id="country" name="country" required>
+                    </div>
+                    <div>
+                        <label for="city">City</label>
+                        <input type="text" id="city" name="city" required>
+                    </div>
+                    <div>
+                        <label for="address">Address</label>
+                        <input type="text" id="address" name="address" required>
+                    </div>
+                    <div>
+                        <label for="profession">Profession</label>
+                        <input type="text" id="profession" name="profession" required>
+                    </div>
+                    <div>
+                        <label for="cv">CV</label>
+                        <input type="file" id="cv" name="cv" required>
+                    </div>
+                    <div>
+                        <label for="gender">Gender</label>
+                        <select id="gender" name="gender" required>
+                            <option value="male">Male</option>
+                            <option value="female">Female</option>
+                        </select>
+                    </div>
+                    <button type="submit">Submit</button>
+                </form>--}}
+
+
+
             </div>
         </div>
     </div>
