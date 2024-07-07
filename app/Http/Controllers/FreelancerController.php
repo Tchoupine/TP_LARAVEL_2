@@ -133,4 +133,5 @@ class FreelancerController extends Controller
         return redirect()->route('freelancers.index')
                          ->with('success', 'Freelancer created successfully.');
     }
+    
 }

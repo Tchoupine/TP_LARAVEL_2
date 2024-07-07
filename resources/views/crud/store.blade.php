@@ -157,7 +157,6 @@
                             <button class="btn btn-primary click-btn btn-plan" type="submit">Create</button>
                         </div>
                     </div>
-                </form> 
 
              
             </div>
